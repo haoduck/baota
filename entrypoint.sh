@@ -1,3 +1,6 @@
+if [ -f "/password.sh" ];then
+    bash /password.sh
+fi
 if [ ! -f "/etc/ssh/ssh_host_rsa_key" ];then
     ssh-keygen -t rsa -N '' -q -f /etc/ssh/ssh_host_rsa_key
 fi
