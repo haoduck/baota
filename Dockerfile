@@ -18,7 +18,7 @@ RUN cd /home \
     && yum -y update \
     && yum -y install wget openssh-server \
     && echo 'Port 63322' > /etc/ssh/sshd_config \
-    && bash <(wget -qO- https://haoduck.com/sh/bt7.sh) 7.7.0 \
+    && bash "$(wget -qO- https://haoduck.com/sh/bt7.sh)" 7.7.0 \
     && python /set_default.py \
     && echo '["linuxsys", "webssh"]' > /www/server/panel/config/index.json \
     && yum clean all
