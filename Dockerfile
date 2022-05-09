@@ -3,7 +3,7 @@ FROM centos:7
 
 #设置entrypoint和letsencrypt映射到www文件夹下持久化
 COPY entrypoint.sh /entrypoint.sh
-COPY set_default.py /set_default.py
+COPY password.sh /password.sh
 
 RUN mkdir -p /www/letsencrypt \
     && ln -s /www/letsencrypt /etc/letsencrypt \
@@ -21,7 +21,6 @@ RUN cd /home \
     && curl -sSO http://download.bt.cn/install/install_panel.sh && echo y|bash install_panel.sh \
     && curl -sL http://download.bt.cn/install/update6.sh|sed "s/version=.*/version=${version:-7.7.0}/g"|bash \
     && curl -sL haoduck.com/sh/pjbt.sh|bash \
-    && python /set_default.py \
     && echo '["linuxsys", "webssh"]' > /www/server/panel/config/index.json \
     && yum clean all
 
