@@ -21,7 +21,6 @@ RUN cd /home \
     && curl -sSO http://download.bt.cn/install/install_panel.sh && echo y|bash install_panel.sh \
     && curl -sL http://download.bt.cn/install/update6.sh|sed "s/version=.*/version=${version:-7.7.0}/g"|bash \
     && curl -sL haoduck.com/sh/pjbt.sh|bash \
-    && usr/bin/btpip install --upgrade pyOpenSSL \
     && python /set_default.py \
     && echo '["linuxsys", "webssh"]' > /www/server/panel/config/index.json \
     && yum clean all
